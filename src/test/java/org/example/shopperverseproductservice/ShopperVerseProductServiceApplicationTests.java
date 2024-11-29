@@ -1,10 +1,10 @@
-package org.example.shoperverse;
+package org.example.shopperverseproductservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ShoperVerseApplicationTests {
+class ShopperVerseProductServiceApplicationTests {
 
     @Test
     void contextLoads() {

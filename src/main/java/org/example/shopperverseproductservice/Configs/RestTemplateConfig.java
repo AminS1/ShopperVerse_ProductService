@@ -1,4 +1,4 @@
-package org.example.shoperverse.Configs;
+package org.example.shopperverseproductservice.Configs;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;

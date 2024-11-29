@@ -1,13 +1,13 @@
-package org.example.shoperverse;
+package org.example.shopperverseproductservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ShoperVerseApplication {
+public class ShopperVerseProductServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ShoperVerseApplication.class, args);
+        SpringApplication.run(ShopperVerseProductServiceApplication.class, args);
     }
 
 }
