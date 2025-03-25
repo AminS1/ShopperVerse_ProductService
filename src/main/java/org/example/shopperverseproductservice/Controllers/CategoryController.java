@@ -2,10 +2,7 @@ package org.example.shopperverseproductservice.Controllers;
 
 import org.example.shopperverseproductservice.Models.Category;
 import org.example.shopperverseproductservice.Services.CategoryService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +22,15 @@ public class CategoryController {
     @PostMapping("/bulk")
     public List<Category> addBulkCategories(@RequestBody List<Category> categories) {
         return categoryService.addBulkCategories(categories);
+    }
+
+    @GetMapping("/{categoryId}")
+    public Category getCategoryById(@PathVariable Long categoryId) {
+        return this.categoryService.getCategoryById(categoryId);
+    }
+
+    @GetMapping
+    public List<Category> getAllCategories() {
+        return this.categoryService.getAllCategories();
     }
 }

@@ -22,4 +22,8 @@ public interface ProductService {
     Product updateProduct(Long id,Product product) throws ProductNotFoundException;
 
     void deleteProduct(Long id);
+
+    List<Product> searchProductsByTitle(String category, int pageNumber, int pageSize, String sortBy, int sortOrder);
+
+    List<Product> getProductsByCategory(Long categoryId);
 }

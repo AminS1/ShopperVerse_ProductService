@@ -5,6 +5,7 @@ import org.example.shopperverseproductservice.Repositories.CategoryRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class SelfCategoryService implements CategoryService{
@@ -21,5 +22,16 @@ public class SelfCategoryService implements CategoryService{
     @Override
     public List<Category> addBulkCategories(List<Category> categories) {
         return categoryRepository.saveAll(categories);
+    }
+
+    @Override
+    public Category getCategoryById(Long categoryId) {
+        Optional<Category> categoryOptional = this.categoryRepository.findById(categoryId);
+        return categoryOptional.orElse(null);
+    }
+
+    @Override
+    public List<Category> getAllCategories() {
+        return this.categoryRepository.findAll();
     }
 }

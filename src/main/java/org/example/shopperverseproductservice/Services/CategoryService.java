@@ -9,4 +9,8 @@ public interface CategoryService {
     Category addCategory(Category category);
 
     List<Category> addBulkCategories(List<Category> categories);
+
+    Category getCategoryById(Long categoryId);
+
+    List<Category> getAllCategories();
 }

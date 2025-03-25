@@ -52,4 +52,9 @@ public class ProductController {
     public List<Product> addBulkProducts(@RequestBody List<Product> products) {
         return productService.addBulkProducts(products);
     }
+
+    @GetMapping("/getByCategory")
+    public List<Product> getProductsByCategory(@RequestParam Long categoryId) {
+        return this.productService.getProductsByCategory(categoryId);
+    }
 }

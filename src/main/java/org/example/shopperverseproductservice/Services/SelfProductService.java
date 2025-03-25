@@ -4,6 +4,8 @@ import org.example.shopperverseproductservice.Exceptions.ProductNotFoundExceptio
 import org.example.shopperverseproductservice.Models.Category;
 import org.example.shopperverseproductservice.Models.Product;
 import org.example.shopperverseproductservice.Repositories.ProductRepository;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -30,15 +32,13 @@ public class SelfProductService implements ProductService {
 
     @Override
     public List<Product> getAllProducts(String token) {
-        System.out.println("getAllProducts");
-        Object user = restTemplate.getForObject(
-                "http://localhost:8082/token/validate/" + token ,
-               Object.class
-        );
-        if(user == null) {
-            throw new RuntimeException("Invalid token");
-        }
-        System.out.println("Token Verified");
+//        Object user = restTemplate.getForObject(
+//                "http://localhost:8082/token/validate/" + token ,
+//               Object.class
+//        );
+//        if(user == null) {
+//            throw new RuntimeException("Invalid token");
+//        }
         return productRepository.findAll();
     }
 
@@ -77,6 +77,21 @@ public class SelfProductService implements ProductService {
 
     @Override
     public List<Product> addBulkProducts(List<Product> products) {
-      return productRepository.saveAll(products);
+        return productRepository.saveAll(products);
+    }
+
+    public List<Product> searchProductsByTitle(String searchText, int pageNumber, int pageSize, String sortBy, int sortOrder) {
+        return productRepository.findProductsByTitleContains(
+                searchText,
+                PageRequest.of(
+                        pageNumber,
+                        pageSize,
+                        Sort.by(sortOrder == 1 ? Sort.Direction.ASC : Sort.Direction.DESC, sortBy)
+                )
+        );
+    }
+
+    public List<Product> getProductsByCategory(Long categoryId) {
+        return this.productRepository.findProductsByCategoryId(categoryId);
     }
 }
